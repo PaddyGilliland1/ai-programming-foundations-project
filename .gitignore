@@ -42,3 +42,4 @@ __pycache__/
 Thumbs.db
 
 # PDF files are not ignored: the report PDF is a deliverable.
+!birmingham_purchase_cards_2024.csv
