@@ -1,0 +1,8 @@
+# Paths agreed for publication. The pre-push hook refuses any pushed commit that adds or
+# changes a path not listed here. One path per line, from the repository root. A line
+# containing * is an fnmatch glob, and its * also matches /. Lines starting with # are comments.
+README.md
+.gitignore
+ALLOWLIST.txt
+requirements.txt
+data_workflow.ipynb
