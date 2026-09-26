@@ -27,7 +27,10 @@ Contains public sector information licensed under the Open Government Licence v3
 
 ## How to run
 
-These steps assume Python 3.12 and Git are installed. The notebook was run with Python 3.12.3.
+You need Git and **Python 3.12 or newer**. The notebook was run with Python 3.12.3, and the
+package versions pinned in `requirements.txt` (for example pandas 3.0.6 and numpy 2.5.3) will not
+install on older versions of Python. Check yours with `python3 --version` (on Windows,
+`py --version`).
 
 1. Clone this repository and move into its folder:
 
@@ -43,7 +46,17 @@ These steps assume Python 3.12 and Git are installed. The notebook was run with 
    source .venv/bin/activate
    ```
 
-   On Windows, activate it with `.venv\Scripts\activate` instead.
+   On Windows, create and activate it in PowerShell with:
+
+   ```powershell
+   py -3.12 -m venv .venv
+   .venv\Scripts\Activate.ps1
+   ```
+
+   If PowerShell refuses to run the activate script, allow it for this window only with
+   `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`, then run the activate line again.
+   On a Mac whose `python3` is older than 3.12, install Python 3.12 from python.org and use
+   `python3.12 -m venv .venv`.
 
 3. Install the dependencies:
 

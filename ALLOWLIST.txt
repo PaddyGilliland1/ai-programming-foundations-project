@@ -7,3 +7,4 @@ ALLOWLIST.txt
 requirements.txt
 data_workflow.ipynb
 birmingham_purchase_cards_2024.csv
+module_summary.pdf
