@@ -1,15 +1,16 @@
-# ai-programming-foundations
+# ai-programming-foundations-project
 
 ## Project description
 
 A reusable pandas workflow in one Jupyter notebook, `data_workflow.ipynb`, that loads Birmingham
 City Council's purchase card transactions for 2024, cleans them with four documented functions,
-summarises spend with one analysis function and draws three charts. The question is where the
-council's card spend goes, and how far the raw record can be trusted to answer that. One
-merchant, by its name the council paying itself, is kept and flagged but set aside from the
-primary analysis because nothing in the data says what those payments are for, and the notebook
-reports the total in the published file beside the total analysed. The notebook records each
-cleaning decision, including the rules I considered and rejected.
+screens them with a fifth, summarises spend with one analysis function and draws three charts
+with one helper. The question is where the council's card spend goes, and how far the raw record
+can be trusted to answer that. One merchant, by its name the council paying itself, is kept and
+flagged but set aside from the primary analysis because nothing in the data says what those
+payments are for, and the notebook reports the total in the published file beside the total
+analysed. The notebook records each cleaning decision, including the rules I considered and
+rejected.
 
 ## Dataset
 
@@ -91,7 +92,7 @@ Poor cleaning here would not just be untidy. It would move money between parts o
 - **Merging names.** Merchant names are cut at 25 characters and carry order numbers, so one supplier appears under many names. A loose rule, such as joining names that share the same start, would join different suppliers ("argos ltd" and "argosy toys") and inflate some totals while hiding others. I applied only rules I could check against real names in the file, and I kept the raw name beside the cleaned one.
 - **Merging directorates.** The council's own page warns that a directorate may appear under different names after internal changes, and the 2024 data shows it. Joining two names on a guess would move spend between services and could suggest one department overspent. I merged only one name, "Adult Social Care (eip)", which I assumed is part of Adult Social Care because the two run side by side from April, and left the uncertain renames apart.
 - **Dropping rows.** Removing refunds or foreign-currency purchases would look like tidying, but removing refunds would overstate spend, and removing foreign purchases would understate it and hide who buys abroad. I kept refunds as negatives and used the amount billed in pounds.
-- **Hiding what cannot be explained.** One merchant, which by its name is the council paying itself, takes 18.06% of the published net spend, and nothing in the file says what for. Quietly deleting it, or quietly keeping it, would both mislead. I kept the rows, flagged them, set them aside from the main analysis and reported both totals, so anyone can see the effect.
+- **Hiding what cannot be explained.** One merchant, which by its name is the council paying itself, takes 18.06% of the published net spend, and nothing in the file says what for. Quietly deleting it, or quietly keeping it, would both mislead. I kept the rows, flagged them, set them aside from the primary analysis and reported both totals, so anyone can see the effect.
 
 The data also has a coverage bias. Purchase cards are one channel of council spending, and nearly a fifth of the spend in this file appears to be the council paying itself. Any conclusion about Birmingham's spending as a whole would be misleading if drawn from this file alone.
 
