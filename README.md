@@ -86,16 +86,23 @@ pip freeze > requirements.txt
 
 ### Bias awareness
 
-[TO WRITE in your own words.]
+Poor cleaning here would not just be untidy. It would move money between parts of the council and change the story the data tells. Four places matter most in this dataset:
+
+- **Merging names.** Merchant names are cut at 25 characters and carry order numbers, so one supplier appears under many names. A loose rule, such as joining names that share the same start, would join different suppliers ("argos ltd" and "argosy toys") and inflate some totals while hiding others. I applied only rules I could check against real names in the file, and I kept the raw name beside the cleaned one.
+- **Merging directorates.** The council's own page warns that a directorate may appear under different names after internal changes, and the 2024 data shows it. Joining two names on a guess would move spend between services and could suggest one department overspent. I merged only one name, "Adult Social Care (eip)", which I assumed is part of Adult Social Care because the two run side by side from April, and left the uncertain renames apart.
+- **Dropping rows.** Removing refunds or foreign-currency purchases would look like tidying, but removing refunds would overstate spend, and removing foreign purchases would understate it and hide who buys abroad. I kept refunds as negatives and used the amount billed in pounds.
+- **Hiding what cannot be explained.** One merchant, which by its name is the council paying itself, takes 18.06% of the published net spend, and nothing in the file says what for. Quietly deleting it, or quietly keeping it, would both mislead. I kept the rows, flagged them, set them aside from the main analysis and reported both totals, so anyone can see the effect.
+
+The data also has a coverage bias. Purchase cards are one channel of council spending, and nearly a fifth of the spend in this file appears to be the council paying itself. Any conclusion about Birmingham's spending as a whole would be misleading if drawn from this file alone.
 
 ### ML workflow changes
 
-[TO WRITE in your own words.]
+The same cleaning functions would sit at the front of a machine learning pipeline, run in the same order on the training data and on any new data. I would change three things. First, split the data by date before fitting anything, so the model is tested on months it has not seen. Second, fix the cleaning rules on the training months only, so nothing from the test months leaks into them. Third, add checks that fail loudly when a new file brings an unknown currency, a new directorate name or a column in a different format. A natural first model would predict a transaction's spending category from its merchant and amount, which is the coding job a finance team does by hand. The file carries no category, so the finance team would first need to label a sample to train on.
 
 ### Neural network preparation
 
-[TO WRITE in your own words.]
+A neural network needs numbers on a similar scale and a consistent set of inputs. Amounts would need scaling, and possibly a log transform, because hundreds of payments are over a thousand pounds while a typical transaction is tens of pounds. Directorate and currency would become one-hot or embedded categories. Merchant names, with thousands of values even after cleaning, would suit an embedding or a text encoding of the name itself. Dates would become features such as month and day of week, because the data shows strong monthly patterns such as the August dip in school transactions. I would also need to decide what to do with refunds, which a model could learn to treat as noise.
 
 ### Agentic automation potential
 
-[TO WRITE in your own words.]
+The strongest case is the monthly publication itself. An agent could fetch each new month's file, run the same cleaning functions, flag what the rules cannot handle (a new directorate name, an unfamiliar currency, a merchant that fits no rule) and draft a short summary for a finance officer to check. The functions in this notebook are already written as separate steps, so each could become a tool the agent calls. The limit is judgement: deciding whether two directorate names are the same service, or whether a payment to the council itself should count as spend, needs a person. So the agent would prepare and flag, and a person would approve.
