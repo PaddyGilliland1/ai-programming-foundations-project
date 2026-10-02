@@ -94,7 +94,7 @@ Poor cleaning here would not just be untidy. It would move money between parts o
 - **Dropping rows.** Removing refunds or foreign-currency purchases would look like tidying, but removing refunds would overstate spend, and removing foreign purchases would understate it and hide who buys abroad. I kept refunds as negatives and used the amount billed in pounds.
 - **Hiding what cannot be explained.** One merchant, which by its name is the council paying itself, takes 18.06% of the published net spend, and nothing in the file says what for. Quietly deleting it, or quietly keeping it, would both mislead. I kept the rows, flagged them, set them aside from the primary analysis and reported both totals, so anyone can see the effect.
 
-The data also has a coverage bias. Purchase cards are one channel of council spending, and nearly a fifth of the spend in this file appears to be the council paying itself. Any conclusion about Birmingham's spending as a whole would be misleading if drawn from this file alone.
+The data also has a coverage bias. Purchase cards are one payment method of council spending, and nearly a fifth of the spend in this file appears to be the council paying itself. Any conclusion about Birmingham's spending as a whole would be misleading if drawn from this file alone.
 
 ### ML workflow changes
 
