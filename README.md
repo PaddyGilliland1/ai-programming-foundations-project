@@ -4,13 +4,13 @@
 
 I built a reusable pandas workflow in one Jupyter notebook, `data_workflow.ipynb`, that loads
 Birmingham City Council's purchase card transactions for 2024, cleans them with four documented
-functions, screens them with a fifth, summarises spend with one analysis function, lists Amazon
-Prime charges for review with another and draws three charts with one helper. The question is where the council's card spend goes, and how far the raw
-record can be trusted to answer that. One merchant, by its name the council paying itself, is kept
-and flagged but set aside from the primary analysis because nothing in the data says what those
-payments are for, and the notebook reports the total in the published file beside the total
-analysed. The notebook records each cleaning decision, including the rules I considered and
-rejected.
+functions, screens them with a fifth and records each cleaning decision, including the rules I
+considered and rejected. One analysis function summarises spend, another lists Amazon Prime charges
+for review, and one helper draws three charts. The question is where the council's card spend goes,
+and how far the raw record can be trusted to answer that. One merchant, by its name the council
+paying itself, is kept and flagged but set aside from the primary analysis because nothing in the
+data says what those payments are for, and the notebook reports the total in the published file
+beside the total analysed.
 
 ## Dataset
 
