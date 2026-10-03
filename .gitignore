@@ -41,4 +41,6 @@ __pycache__/
 Thumbs.db
 
 # PDF files are not ignored: the report PDF is a deliverable.
+
+# The dataset the notebook reads.
 !birmingham_purchase_cards_2024.csv
