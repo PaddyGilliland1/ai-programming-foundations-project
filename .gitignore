@@ -1,5 +1,4 @@
-# Data files stay local by default. To publish one, add a "!file.csv" line at the end of this
-# file and list the same path in ALLOWLIST.txt.
+# Data files are ignored unless listed below.
 *.csv
 *.tsv
 *.xlsx
@@ -42,3 +41,6 @@ __pycache__/
 Thumbs.db
 
 # PDF files are not ignored: the report PDF is a deliverable.
+
+# The dataset the notebook reads.
+!birmingham_purchase_cards_2024.csv
